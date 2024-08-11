@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space & Agriculture Interactive Map</title>
+    
+    <!-- Include Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    
+    <!-- Include custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Include Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Include Leaflet Choropleth Plugin -->
+    <script src="https://cdn.jsdelivr.net/gh/gka/leaflet-choropleth@1.1.1/dist/choropleth.min.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Space & Agriculture: Interactive Crop Map</h1>
+        <nav>
+            <ul>
+                <li><a href="map.html#map">Map</a></li>
+                <li><a href="map.html#about">About</a></li>
+                <li><a href="map.html#contact">Contact</a></li>
+                <li><a href="index.html">Homepage</a></li> <!-- Link to the homepage -->
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main>
+        <section id="map">
+            <!-- Create a div where the map will be rendered -->
+            <div id="map" style="height: 600px;"></div> <!-- Adjust height as needed -->
+            <div id="map" style="height: 600px;"></div> <!-- Adjust height as needed -->
+            
+        </section>
+        
+        <section id="about">
+            <div class="container">
+            <h1 >About</h1>
+            <P>
+            <ul>
+                <li>Welcome to our platform, where we explore the powerful synergy between space technology and agriculture. Our mission is to demonstrate how cutting-edge advancements in satellite data and space research can revolutionize farming practices. By leveraging these innovations, we aim to empower farmers and agricultural enthusiasts with the tools and knowledge needed to make informed decisions about crop feasibility and land use.</li>
+                <li>Our interactive map serves as the heart of this initiative, providing a user-friendly interface to analyze and visualize how space technology can enhance crop management. By integrating data on soil health, weather patterns, and other crucial factors, our map helps users identify the most suitable crops for specific regions. This not only optimizes yields but also promotes sustainable farming practices that are essential for the future of agriculture.</li>
+                <li>Whether you're a farmer looking to maximize your land's potential, a researcher interested in the intersection of technology and agriculture, or simply someone curious about the future of farming, our platform offers valuable insights and resources. Join us as we explore the exciting possibilities that space technology brings to the agricultural landscape, paving the way for a more sustainable and prosperous future.</li>
+            </ul>
+        </div>
+
+        </section>
+        
+        <section id="contact">
+            <h1 >Contact</h1>
+            <p>
+            <h3>
+                <p>For more information, reach us at <a href="mailto:bhatthetanshi16@gmail.com">bhatthetanshi16@gmail.com</a>.</p>
+            </h3>
+        </section>
+    </main>
+    
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Space & Agriculture. All rights reserved.</p>
+    </footer>
+    
+    <!-- Include your custom JavaScript file -->
+   
+       
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-ajax/dist/leaflet.ajax.min.js"></script>
+    <script>
+        // Initialize the map and set its view
+        var map = L.map('map').setView([23.2230, 72.6500], 14);
+
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Define a function to set the color based on density or other property
+        function getColor(d) {
+            return d > 8000 ? '#800026' :
+                   d > 6000 ? '#BD0026' :
+                   d > 4000 ? '#E31A1C' :
+                   d > 2000 ? '#FC4E2A' :
+                   d > 1000 ? '#FD8D3C' :
+                   d > 500  ? '#FEB24C' :
+                              '#FFEDA0';
+        }
+
+        // Define a function to style each feature (polygon)
+        function style(feature) {
+            return {
+                fillColor: getColor(feature.properties.density), // Use 'density' or your property name
+                weight: 2,
+                opacity: 1,
+                color: 'white',
+                dashArray: '3',
+                fillOpacity: 0.7
+            };
+        }
+
+        // Add GeoJSON layer with Choropleth styling
+        L.geoJson.ajax('json.geojson', {
+            style: style,
+            onEachFeature: function(feature, layer) {
+                layer.bindPopup("Borough: " + feature.properties.borough + "<br>Density: " + feature.properties.density);
+            }
+        }).addTo(map);
+
+    </script>
+    
+</body>
+</html>

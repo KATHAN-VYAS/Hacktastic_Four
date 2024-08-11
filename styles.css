@@ -1,0 +1,150 @@
+/* Basic Reset */
+body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+*{
+    scroll-behavior: smooth;
+}
+
+.container{
+    background-color:rgba(74, 246, 17, 0.2);
+    border-radius: 25px;
+    padding: 15px;
+    
+}
+
+.container ul li{
+    padding: 10px;
+    word-spacing: 2px;
+    list-style-type: none;
+    line-height: 1.5;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Roboto', sans-serif; /* Space-themed font */
+    color: #139613;
+    text-shadow: 1px 1px 2px #000; /* Subtle text shadow for readability */
+    background-image: url("1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    scroll-behavior: smooth;
+
+}
+#about h1{
+    color: rgb(3, 65, 6);
+    margin-bottom: 10px;
+}
+#contact h1 {
+    color:  rgb(3, 65, 6);
+;
+}
+
+/* Header Styling */
+header {
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    color: #4af611;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #ffcc00; /* Gold border for a space feel */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7); /* Adds shadow for depth */
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #edbf06; /* Gold color */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
+}
+
+nav ul li a:hover {
+    color: #46cd19; /* White color on hover */
+    transform: scale(1.1); /* Slightly enlarges the link on hover */
+    text-shadow: 0 0 10px #eeeeed; /* Glowing effect */
+}
+
+/* Main Content Styling */
+main {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7); /* Shadow for depth */
+}
+
+section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Map Styling */
+#map {
+    height: 600px;
+    margin:  auto;
+    margin-bottom: 100px;
+
+
+    width: 90%;
+    border: 2px solid #ffcc00; /* Gold border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* Shadow for depth */
+}
+
+
+/* Footer Styling */
+footer {
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    color: #d6cfcf;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.7); /* Shadow at the top of the footer */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header, footer {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    #map {
+        height: 400px;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

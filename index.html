@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space & Agriculture</title>
+    
+    <!-- Include custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Add some basic styling for the homepage -->
+    <style>
+        /* Base Styling */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Hero Section */
+        .hero {
+            width: 100%;
+            height: 100vh; /* Full-screen height */
+            display: flex;
+            justify-content: top; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            flex-direction: column; /* Stack elements vertically */
+            background: url('space_background_homepage.jpg') no-repeat center center fixed; /* Background image */
+            background-size: cover;
+            text-align: center;
+            color: #5c7504;
+            padding-top: 50px; /* Adjust the value to move the content downwards */
+        }
+
+        .hero h1 {
+            font-size: 5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px #fe7e06; /* Enhances readability */
+        }
+
+        .hero p {
+            font-size: 3em;
+            margin-bottom: 30px;
+        }
+
+        /* Slide Section */
+        .slide {
+            width: 100%;
+            height: 100vh; 
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            color: #ffffff;
+        }
+
+        .btn {
+            display: inline-block;
+            align-items: center;
+            padding: 50px 30px;
+            font-size: 2em;
+            color: #ffffff;
+            background-color: #ffae00;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #87ed09;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Welcome to Space & Agriculture</h1>
+        <p>Explore how space technology enhances agriculture.</p>
+    </div>
+
+    <!-- Slide Section with Button -->
+    <div class="slide">
+        <a href="map.html" class="btn">Explore the Map</a> <!-- Link to the interactive map -->
+    </div>
+
+</body>
+</html>

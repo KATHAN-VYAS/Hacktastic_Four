@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles2.css">
+    <style>
+        #map {
+            height: 100vh; /* Set map height to full viewport height */
+            width: 100%; /* Set map width to full */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+
+            </ul>
+        </nav>
+        <h1>Yield Map</h1>
+    </header>
+    <div id="map"></div>
+    
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-ajax/dist/leaflet.ajax.min.js"></script>
+    <script>
+        // Initialize the map and set its view
+        var map = L.map('map').setView([23.2230, 72.6500], 14);
+
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Define a function to set the color based on density or other property
+        function getColor(d) {
+            return d > 8000 ? '#800026' :
+                   d > 6000 ? '#BD0026' :
+                   d > 4000 ? '#E31A1C' :
+                   d > 2000 ? '#FC4E2A' :
+                   d > 1000 ? '#FD8D3C' :
+                   d > 500  ? '#FEB24C' :
+                              '#FFEDA0';
+        }
+
+        // Define a function to style each feature (polygon)
+        function style(feature) {
+            return {
+                fillColor: getColor(feature.properties.density), // Use 'density' or your property name
+                weight: 2,
+                opacity: 1,
+                color: 'white',
+                dashArray: '3',
+                fillOpacity: 0.7
+            };
+        }
+
+        // Add GeoJSON layer with Choropleth styling
+        L.geoJson.ajax('json.geojson', {
+            style: style,
+            onEachFeature: function(feature, layer) {
+                layer.bindPopup("Borough: " + feature.properties.borough + "<br>Density: " + feature.properties.density);
+            }
+        }).addTo(map);
+    </script>
+</body>
+</html>
